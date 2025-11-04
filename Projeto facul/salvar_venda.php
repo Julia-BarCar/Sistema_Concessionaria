@@ -1,0 +1,1 @@
+<h2>Área de Salvamento de Vendas</h2>

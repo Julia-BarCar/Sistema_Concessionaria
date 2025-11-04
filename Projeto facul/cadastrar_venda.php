@@ -1,0 +1,1 @@
+<h2>Área de Cadastramento de Vendas</h2>
