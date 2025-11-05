@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema concecionaria162m
+-- Schema cencessionaria
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema concecionaria162m
+-- Schema cencessionaria
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `concecionaria162m` DEFAULT CHARACTER SET utf8 ;
-USE `concecionaria162m` ;
+CREATE SCHEMA IF NOT EXISTS `cencessionaria` DEFAULT CHARACTER SET utf8 ;
+USE `cencessionaria` ;
 
 -- -----------------------------------------------------
--- Table `concecionaria162m`.`cliente`
+-- Table `cencessionaria`.`cliente`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `concecionaria162m`.`cliente` (
+CREATE TABLE IF NOT EXISTS `cencessionaria`.`cliente` (
   `id_cliente` INT NOT NULL AUTO_INCREMENT,
   `nome_cliente` VARCHAR(100) NOT NULL,
   `cpf_cliente` CHAR(11) NULL,
@@ -33,9 +33,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `concecionaria162m`.`funcionario`
+-- Table `cencessionaria`.`funcionario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `concecionaria162m`.`funcionario` (
+CREATE TABLE IF NOT EXISTS `cencessionaria`.`funcionario` (
   `id_funcionario` INT NOT NULL AUTO_INCREMENT,
   `nome_funcionario` VARCHAR(100) NOT NULL,
   `email_funcionario` VARCHAR(100) NULL,
@@ -45,9 +45,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `concecionaria162m`.`marca`
+-- Table `cencessionaria`.`marca`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `concecionaria162m`.`marca` (
+CREATE TABLE IF NOT EXISTS `cencessionaria`.`marca` (
   `id_marca` INT NOT NULL AUTO_INCREMENT,
   `nome_marca` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_marca`))
@@ -55,9 +55,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `concecionaria162m`.`modelo`
+-- Table `cencessionaria`.`modelo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `concecionaria162m`.`modelo` (
+CREATE TABLE IF NOT EXISTS `cencessionaria`.`modelo` (
   `id_modelo` INT NOT NULL AUTO_INCREMENT,
   `nome_modelo` VARCHAR(45) NOT NULL,
   `cor_modelo` VARCHAR(45) NULL,
@@ -67,16 +67,16 @@ CREATE TABLE IF NOT EXISTS `concecionaria162m`.`modelo` (
   INDEX `fk_modelo_marca1_idx` (`marca_id_marca` ASC) ,
   CONSTRAINT `fk_modelo_marca1`
     FOREIGN KEY (`marca_id_marca`)
-    REFERENCES `concecionaria162m`.`marca` (`id_marca`)
+    REFERENCES `cencessionaria`.`marca` (`id_marca`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `concecionaria162m`.`venda`
+-- Table `cencessionaria`.`venda`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `concecionaria162m`.`venda` (
+CREATE TABLE IF NOT EXISTS `cencessionaria`.`venda` (
   `id_venda` INT NOT NULL AUTO_INCREMENT,
   `data_venda` DATE NOT NULL,
   `valor_venda` DECIMAL(10,2) NOT NULL,
@@ -89,17 +89,17 @@ CREATE TABLE IF NOT EXISTS `concecionaria162m`.`venda` (
   INDEX `fk_venda_modelo1_idx` (`modelo_id_modelo` ASC) ,
   CONSTRAINT `fk_venda_cliente`
     FOREIGN KEY (`cliente_id_cliente`)
-    REFERENCES `concecionaria162m`.`cliente` (`id_cliente`)
+    REFERENCES `cencessionaria`.`cliente` (`id_cliente`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_venda_funcionario1`
     FOREIGN KEY (`funcionario_id_funcionario`)
-    REFERENCES `concecionaria162m`.`funcionario` (`id_funcionario`)
+    REFERENCES `cencessionaria`.`funcionario` (`id_funcionario`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_venda_modelo1`
     FOREIGN KEY (`modelo_id_modelo`)
-    REFERENCES `concecionaria162m`.`modelo` (`id_modelo`)
+    REFERENCES `cencessionaria`.`modelo` (`id_modelo`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
